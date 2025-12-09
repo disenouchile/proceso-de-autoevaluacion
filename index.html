@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de autoevaluación – Diseño UChile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #7a7a7a;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #54595f;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #61ce70;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #69727d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #61ce70;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230033A0" width="1200" height="600"/></svg>');
+            background-size: cover;
+            padding: 120px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.2;
+            color: #54595f;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 60px;
+            line-height: 1.2;
+            color: #54595f;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #00D0B6 0%, #0033A0 100%);
+            border-radius: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: #00D0B6;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #00b8a0;
+            transform: translateY(-2px);
+        }
+
+        /* Intro Section */
+        .intro-section {
+            padding: 80px 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .badge-wrapper {
+            position: relative;
+        }
+
+        .badge-card {
+            background: linear-gradient(180deg, #0033A0 0%, #00D0B6 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .badge-card h2 {
+            font-size: 32px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .badge-card h2 b {
+            font-weight: 700;
+        }
+
+        .star-decoration {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            opacity: 0.3;
+        }
+
+        .intro-content h3 {
+            font-size: 20px;
+            color: #54595f;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .intro-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .intro-content ul {
+            margin: 20px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .intro-content li {
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        /* Separator */
+        .separator {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .separator img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Criteria Section */
+        .criteria-section {
+            padding: 60px 0;
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .criteria-card {
+            background: white;
+            border-radius: 0;
+            padding: 0;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .criteria-header {
+            padding: 30px;
+            min-height: 280px;
+        }
+
+        .criteria-card:nth-child(3n+1) .criteria-header {
+            background: #FF6100;
+        }
+
+        .criteria-card:nth-child(3n+2) .criteria-header {
+            background: #DA2F9F;
+        }
+
+        .criteria-card:nth-child(3n+3) .criteria-header {
+            background: #0033A0;
+        }
+
+        .criteria-number {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .criteria-card h3 {
+            color: white;
+            font-size: 24px;
+            line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .criteria-body {
+            padding: 30px;
+            background: white;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .criteria-card p {
+            color: #7a7a7a;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .more-info-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: #00D0B6;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .more-info-btn:hover {
+            background: #00b8a0;
+        }
+
+        .criteria-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, #0033A0 0%, #00D0B6 100%);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .team-header {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .team-title {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .team-member {
+            display: flex;
+            gap: 15px;
+            color: white;
+        }
+
+        .team-star {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin-top: 5px;
+        }
+
+        .team-star svg {
+            fill: #00D0B6;
+        }
+
+        .team-member h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .team-member p {
+            color: white;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .team-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .team-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: #FF6100;
+            font-weight: 600;
+        }
+
+        .team-list li svg {
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        /* News Section */
+        .news-section {
+            background: #f8f8f8;
+            padding: 80px 0;
+        }
+
+        .news-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .news-header svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .news-header h2 {
+            font-size: 32px;
+            color: #54595f;
+            font-weight: 700;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #0033A0, #00D0B6);
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-card h4 {
+            color: #54595f;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-size: 16px;
+            font-weight: 600;
+            min-height: 80px;
+        }
+
+        .news-card h4 a {
+            color: #54595f;
+            text-decoration: none;
+        }
+
+        .news-card h4 a:hover {
+            color: #00D0B6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #54595f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #00D0B6;
+        }
+
+        /* Downloads Section */
+        .downloads-section {
+            background: #0033A0;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .downloads-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .downloads-header h2 {
+            font-size: 32px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .download-card {
+            text-align: center;
+        }
+
+        .download-preview {
+            width: 100%;
+            height: 320px;
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .download-card h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.4;
+            min-height: 50px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: white;
+            color: #0033A0;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        footer {
+            background: #f8f8f8;
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        footer .logo img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        footer .social-icons {
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            text-align: right;
+            color: #7a7a7a;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 0;
+            padding: 50px;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            margin: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal h4 {
+            color: #FF6100;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .modal table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .modal td {
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            vertical-align: top;
+            line-height: 1.8;
+        }
+
+        .modal td:first-child {
+            background: #f8f8f8;
+            font-weight: 700;
+            color: #0033A0;
+            width: 180px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .criteria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1,
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .criteria-grid,
+            .criteria-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .team-header {
+                grid-template-columns: 1fr;
+            }
+
+            .team-title {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .downloads-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            footer .social-icons {
+                justify-content: center;
+            }
+
+            footer p {
+                text-align: center;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .modal td:first-child {
+                width: auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 88'%3E%3Ctext x='10' y='50' font-family='Arial' font-size='24' fill='%230033A0' font-weight='bold'%3EAutoevaluación%3C/text%3E%3C/svg%3E" alt="Autoevaluación">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#quienes-somos">Quiénes somos</a></li>
+                        <li><a href="#experiencias">Experiencias</a></li>
+                        <li><a href="#investigacion">Investigación</a></li>
+                        <li><a href="#noticias">Noticias U. Chile</a></li>
+                    </ul>
+                </nav>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">i</a>
+                    <a href="#" aria-label="Twitter">t</a>
+                    <a href="#" aria-label="YouTube">y</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <h1><b>Proceso</b> de</h1>
+                    <h2>Autoevaluación</h2>
+                    <a href="#" class="btn">Programa académico de diseño</a>
+                </div>
+                <div class="hero-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="badge-wrapper">
+                    <div class="badge-card">
+                        <div class="badge-icon"></div>
+                        <h2>Diseño<br><i><b>en Autoevaluación</b></i></h2>
+                    </div>
+                    <div class="star-decoration">★</div>
+                </div>
+                <div class="intro-content">
+                    <h3><strong>¿De qué se trata este proceso?</strong></h3>
+                    <p>En el Programa Académico de Diseño estamos implementando un proceso de autoevaluación que significa <strong>elaborar un mecanismo para el aseguramiento de la calidad</strong>, a la vez que una <strong>herramienta para la gestión</strong> que propicie la mejora continua y el surgimiento de nuevas oportunidades y desafíos.</p>
+                    <p>Para este propósito formamos una <strong>Comisión de Autoevaluación</strong> que dedicará su esfuerzo a reunir evidencia y analizar información e indicadores, para evaluar <strong>cinco criterios:</strong></p>
+                    <ul>
+                        <li>• <strong>Perfil de egreso</strong> y currículo</li>
+                        <li>• <strong>Proceso formativo y resultados</strong> de enseñanza-aprendizaje</li>
+                        <li>• <strong>Académicos</strong> y desarrollo de la docencia</li>
+                        <li>• <strong>Autorregulación</strong></li>
+                        <li>• <strong>Gestión y recursos</strong> para el aprendizaje</li>
+                    </ul>
+                    <p>El detalle de los criterios, a continuación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Separator -->
+    <section class="separator">
+        <div class="container">
+            <svg width="800" height="11" viewBox="0 0 800 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="5.5" cy="5.5" r="5.5" fill="#00D0B6"/>
+                <circle cx="400" cy="5.5" r="5.5" fill="#DA2F9F"/>
+                <circle cx="794.5" cy="5.5" r="5.5" fill="#FF6100"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Criteria Section -->
+    <section class="criteria-section">
+        <div class="container">
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <div class="criteria-number">Criterio <b><i>Nº1</i></b></div>
+                        <h3>Perfil de egreso y currículo</h3>
+                    </div>
+                    <div class="criteria-body">
+                        <p>Busca asegurar que el Programa cuenta con <strong>definiciones fundamentales que orientan la gestión y planificación curricular</strong> y el desarrollo de la docencia, con el objetivo de preparar a sus estudiantes para enfrentar desafíos y demandas, a través de una formación actualizada e integral.</p>
+                        <a href="#" class="more-info-btn" onclick="openModal(1); return false;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 2h12v12H2V2zm1 1v10h10V3H3z"/>
+                            </svg>
+                            Más información
+                        </a>
+                    </div>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <div class="criteria-number">Criterio <b><i>Nº2</i></b></div>
+                        <h3>Proceso formativo y resultados de enseñanza-aprendizaje</h3>
+                    </div>
+                    <div class="criteria-body">
+                        <p>Tiene por objetivo asegurar <strong>que los procesos de enseñanza y aprendizaje sean pertinentes, inclusivos</strong> y orientados al desarrollo progresivo de competencias.</p>
+                        <a href="#" class="more-info-btn" onclick="openModal(2); return false;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 2h12v12H2V2zm1 1v10h10V3H3z"/>
+                            </svg>
+                            Más información
+                        </a>
+                    </div>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <div class="criteria-number">Criterio <b><i>Nº3</i></b></div>
+                        <h3>Académicos y desarrollo de la docencia</h3>
+                    </div>
+                    <div class="criteria-body">
+                        <p>Su finalidad es asegurar que <strong>los/as académicos/as</strong> que realizan docencia en el Programa <strong>estén altamente calificados/as</strong>, comprometidos/as con la enseñanza de calidad, y en constante desarrollo profesional y docente.</p>
+                        <a href="#" class="more-info-btn" onclick="openModal(3); return false;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 2h12v12H2V2zm1 1v10h10V3H3z"/>
+                            </svg>
+                            Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="criteria-grid-2">
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <div class="criteria-number">Criterio <b><i>Nº4</i></b></div>
+                        <h3>Autorregulación</h3>
+                    </div>
+                    <div class="criteria-body">
+                        <p>Se trata de asegurar la existencia de <strong>mecanismos internos de seguimiento y evaluación</strong> que permitan identificar áreas de mejora, estableciendo <strong>metas realistas y medibles</strong>. Además, en este criterio se evalúa la capacidad del Programa para adaptarse a cambios y desafíos emergentes, tanto propios como del medio.</p>
+                        <a href="#" class="more-info-btn" onclick="openModal(4); return false;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 2h12v12H2V2zm1 1v10h10V3H3z"/>
+                            </svg>
+                            Más información
+                        </a>
+                    </div>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <div class="criteria-number">Criterio <b><i>Nº5</i></b></div>
+                        <h3>Gestión y recursos para el aprendizaje</h3>
+                    </div>
+                    <div class="criteria-body">
+                        <p>Busca asegurar que el Programa cuenta con los <strong>recursos necesarios y una gestión eficaz</strong> para garantizar las condiciones para el aprendizaje.</p>
+                        <a href="#" class="more-info-btn" onclick="openModal(5); return false;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 2h12v12H2V2zm1 1v10h10V3H3z"/>
+                            </svg>
+                            Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="quienes-somos">
+        <div class="container">
+            <div class="team-header">
+                <div class="team-title">Quiénes somos</div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-star">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#00D0B6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Eduardo Kessi Campos</h4>
+                            <p>Biólogo, coordinador de la Mención Ciencias Naturales y Exactas y de la Comisión de Autoevaluación del Programa Académico de Diseño.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-star">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#00D0B6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Ivette González Sarkis</h4>
+                            <p>Psicóloga, Dra. en Psicología, coordinadora de la Mención de Humanidades y Ciencias Sociales del Programa Académico de Diseño.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-star">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#00D0B6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Jeannette Soto Miranda</h4>
+                            <p>Bióloga, Dra. Planificación e Innovación Educativa y coordinadora de la asignatura Biología del Programa Académico de Diseño.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-star">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#00D0B6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Margarita Bórquez Quintas</h4>
+                            <p>Psicóloga, Doctora en Psicología, profesora del Programa Académico de Diseño.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-star">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#00D0B6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Felipe Munizaga Mellado</h4>
+                            <p>Sociólogo, Magíster en Psicología Educacional, encargado de la Unidad de Análisis del Programa Académico de Diseño.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-star">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#00D0B6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Romina Silva Palma</h4>
+                            <p>Secretaria Ejecutiva Bilingüe, asistente ejecutiva de Dirección y Subdirección del Programa Académico de Diseño.</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="team-list">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#FF6100"/>
+                        </svg>
+                        Comisión de Autoevaluación
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#FF6100"/>
+                        </svg>
+                        Programa Académico de Diseño
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#FF6100"/>
+                        </svg>
+                        Vicerrectoría de Asuntos Académicos
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6.10946 9.19222L0 10L5.88856 10.7814L0.695681 13.6663L6.67656 12.1827L2.93109 17.0722L7.6426 13.4619L6.01055 19.1724L9.19222 13.8938L10 20L10.7814 14.1147L13.6663 19.3076L12.1827 13.3267L17.0722 17.0722L13.4619 12.3574L19.1724 13.9894L13.8938 10.8111L20 10L14.1147 9.22189L19.3076 6.33696L13.3267 7.82064L17.0722 2.93109L12.3574 6.54138L13.9894 0.830861L10.8111 6.10946L10 0L9.22189 5.88856L6.33696 0.695681L7.82064 6.67656L2.93109 2.93109L6.54138 7.6426L0.830861 6.01055L6.10946 9.19222Z" fill="#FF6100"/>
+                        </svg>
+                        Universidad de Chile
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="noticias">
+        <div class="container">
+            <div class="news-header">
+                <svg viewBox="0 0 576 512" fill="#54595f">
+                    <path d="M552 64H112c-20.858 0-38.643 13.377-45.248 32H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h496c13.255 0 24-10.745 24-24V88c0-13.255-10.745-24-24-24z"/>
+                </svg>
+                <h2>Noticias</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image"></div>
+                    <div class="news-content">
+                        <h4><a href="#">U. de Chile recibe visita de pares evaluadores en el marco de su Acreditación 2025</a></h4>
+                        <a href="#" class="read-more">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M10 2l6 6-6 6-1.5-1.5L12 9H0V7h12L8.5 3.5 10 2z"/>
+                            </svg>
+                            Seguir leyendo
+                        </a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image"></div>
+                    <div class="news-content">
+                        <h4><a href="#">UCHILE concluye recorrido institucional con balance de fortalezas y avances en acreditación</a></h4>
+                        <a href="#" class="read-more">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M10 2l6 6-6 6-1.5-1.5L12 9H0V7h12L8.5 3.5 10 2z"/>
+                            </svg>
+                            Seguir leyendo
+                        </a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image"></div>
+                    <div class="news-content">
+                        <h4><a href="#">Universidad de Chile presentó a la CNA Informe de Muestra Intencionada</a></h4>
+                        <a href="#" class="read-more">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M10 2l6 6-6 6-1.5-1.5L12 9H0V7h12L8.5 3.5 10 2z"/>
+                            </svg>
+                            Seguir leyendo
+                        </a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image"></div>
+                    <div class="news-content">
+                        <h4><a href="#">Acreditación Institucional 2025: Rectora socializa avances con las unidades académicas</a></h4>
+                        <a href="#" class="read-more">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M10 2l6 6-6 6-1.5-1.5L12 9H0V7h12L8.5 3.5 10 2z"/>
+                            </svg>
+                            Seguir leyendo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="downloads-section">
+        <div class="container">
+            <div class="downloads-header">
+                <svg width="30" height="30" viewBox="0 0 27 31" fill="none">
+                    <path d="M5.16666 16.5332H4.13333V14.4666H5.16666C5.44072 14.4666 5.70355 14.5754 5.89734 14.7692C6.09113 14.963 6.2 15.2258 6.2 15.4999C6.2 15.7739 6.09113 16.0368 5.89734 16.2306C5.70355 16.4244 5.44072 16.5332 5.16666 16.5332ZM12.4 20.6666V14.4666H13.4333C13.7074 14.4666 13.9702 14.5754 14.164 14.7692C14.3578 14.963 14.4667 15.2258 14.4667 15.4999V19.6332C14.4667 19.9073 14.3578 20.1701 14.164 20.3639C13.9702 20.5577 13.7074 20.6666 13.4333 20.6666H12.4Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.1C0 2.27783 0.326606 1.48933 0.907969 0.907969C1.48933 0.326606 2.27783 0 3.1 0L20.0611 0L26.8667 6.80553V27.9C26.8667 28.7222 26.5401 29.5107 25.9587 30.092C25.3773 30.6734 24.5888 31 23.7667 31H3.1C2.27783 31 1.48933 30.6734 0.907969 30.092C0.326606 29.5107 0 28.7222 0 27.9V3.1Z" fill="white"/>
+                </svg>
+                <h2>Descargables</h2>
+            </div>
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <div class="download-preview"></div>
+                    <h3>Misión y visión estratégica de la Universidad de Chile</h3>
+                    <a href="#" class="download-btn">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z"/>
+                        </svg>
+                        Descargar
+                    </a>
+                </div>
+                <div class="download-card">
+                    <div class="download-preview"></div>
+                    <h3>Modelo educativo Universidad de Chile - 2021</h3>
+                    <a href="#" class="download-btn">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z"/>
+                        </svg>
+                        Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 88'%3E%3Ctext x='10' y='50' font-family='Arial' font-size='24' fill='%230033A0' font-weight='bold'%3EAutoevaluación%3C/text%3E%3C/svg%3E" alt="Autoevaluación">
+                </div>
+                <div>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Instagram">i</a>
+                        <a href="#" aria-label="Twitter">t</a>
+                        <a href="#" aria-label="YouTube">y</a>
+                    </div>
+                    <p>comunicaciones.diseno@uchile.cl</p>
+                    <p><strong>www.diseno.uchile.cl</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-1" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(1)">&times;</span>
+            <h4>Criterio Nº1: Perfil de egreso y currículo</h4>
+            <table>
+                <tr>
+                    <td>1.1. Perfil de graduación</td>
+                    <td>
+                        • El perfil de graduación representa las habilidades y competencias que los estudiantes deben alcanzar.<br>
+                        • Contempla las competencias del Modelo Educativo de la Universidad.<br>
+                        • Está disponible públicamente con mecanismos de difusión.
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.2. Plan de estudios</td>
+                    <td>
+                        • El plan de estudio es consistente con el perfil de graduación.<br>
+                        • Cumple con criterios de desarrollo curricular: flexibilidad, integralidad y articulación.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="modal-2" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(2)">&times;</span>
+            <h4>Criterio Nº2: Proceso formativo y resultados</h4>
+            <table>
+                <tr>
+                    <td>2.1. Proceso de enseñanza</td>
+                    <td>
+                        • Centra los procesos en los estudiantes.<br>
+                        • Promueve formación integral, equidad y calidad educativa.<br>
+                        • La evaluación es consistente con el desarrollo de competencias.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="modal-3" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(3)">&times;</span>
+            <h4>Criterio Nº3: Académicos y desarrollo de la docencia</h4>
+            <table>
+                <tr>
+                    <td>3.1. Equipo académico</td>
+                    <td>
+                        • Académicos calificados y comprometidos con la enseñanza.<br>
+                        • Dedicación adecuada a la labor docente.<br>
+                        • Formación académica y experiencia pedagógica actualizada.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="modal-4" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(4)">&times;</span>
+            <h4>Criterio Nº4: Autorregulación</h4>
+            <table>
+                <tr>
+                    <td>4.1. Capacidad de autorregulación</td>
+                    <td>
+                        • Gestión autónoma y sistemática del funcionamiento.<br>
+                        • Mejora continua basada en evidencia.<br>
+                        • Procesos participativos de autoevaluación.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="modal-5" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(5)">&times;</span>
+            <h4>Criterio Nº5: Gestión y recursos</h4>
+            <table>
+                <tr>
+                    <td>5.1. Gestión interna</td>
+                    <td>
+                        • Organización y coordinación eficaz.<br>
+                        • Gestión coherente con objetivos del programa.
+                    </td>
+                </tr>
+                <tr>
+                    <td>5.2. Infraestructura</td>
+                    <td>
+                        • Provisión y actualización de recursos necesarios.<br>
+                        • Entorno propicio para el aprendizaje.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function openModal(num) {
+            document.getElementById('modal-' + num).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(num) {
+            document.getElementById('modal-' + num).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && !this.hasAttribute('onclick')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
